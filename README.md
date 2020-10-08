@@ -1,2 +1,1 @@
-# haskell-csound
-Experiments with csound-expression
+# csound
