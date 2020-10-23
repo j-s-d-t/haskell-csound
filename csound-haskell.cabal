@@ -1,0 +1,13 @@
+cabal-version:      >=1.10
+name:               csound-haskell
+version:            0.1.0.0
+license-file:       LICENSE
+build-type:         Simple
+extra-source-files: CHANGELOG.md
+
+executable csound-haskell
+    main-is:          Main.hs
+    default-language: Haskell2010
+    build-depends:
+        base >=4.13 && <4.14,
+        csound-expression -any
