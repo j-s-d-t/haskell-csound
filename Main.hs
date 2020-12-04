@@ -2,22 +2,8 @@ module Main (main) where
 
 import Csound.Base
 
--- Make a Tab form a soundfile
 
-mkTab :: String -> Tab
-mkTab str =
-  wavs str 0 WavAll
-
--- Define a granualar instrument
-
-grainInstr :: String -> D -> Sig
-grainInstr filestr pos =
-  partikkel pSpec 10 0.1 1 [mkTab filestr] [sig $ pos * (1.0 / (lengthSnd filestr))] 
-  
-main :: IO ()
-main = dac
-  $ mul 0.2
-  $ grainInstr "Sounds/flutec.wav" 0.07
+-- Partikkel parameters
 
 pSpec :: PartikkelSpec 
 pSpec = PartikkelSpec
@@ -47,3 +33,21 @@ pSpec = PartikkelSpec
   , partikkelWavekeys = [1]
   , partikkelMax_grains = 1000
   }
+
+-- Make a Tab form a soundfile
+
+mkTab :: String -> Tab
+mkTab str =
+  wavs str 0 WavAll
+
+-- Define a granualar instrument
+
+grainInstr :: String -> D -> Sig
+grainInstr filestr pos =
+  partikkel pSpec 10 0.1 1 [mkTab filestr] [sig $ pos * (1.0 / (lengthSnd filestr))] 
+  
+main :: IO ()
+main = dac
+  $ mul 0.2
+  $ grainInstr "Sounds/flutec.wav" 0.07
+
