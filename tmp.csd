@@ -39,18 +39,30 @@ endin
 
 instr 18
 arl0 init 0.0
-ir3 = 1.0
+ir3 = 10.0
 ar0 upsamp k(ir3)
-ir4 filelen "Sounds/flutec.wav"
-ir5 = 0.0
-ir6 = 0.1
-ar1 granule ir3, 64.0, 1.0, 1.0, 0.0, 2, 4.0, 0.0, 50.0, ir4, ir5, 50.0, ir6, 50.0, 30.0, 30.0, 0.5, 0.75, 1.5, 1.2, 0.2
-ar2 = (0.2 * ar1)
-ir9 = 90.0
-ir10 = 100.0
-ar1 compress ar2, ar0, ir5, ir9, ir9, ir10, ir5, ir5, 0.0
-ar0 = (ar1 * 0.8)
-arl0 = ar0
+ir4 = 0.0
+ar1 upsamp k(ir4)
+ir5 = 1.0
+ar2 upsamp k(ir5)
+ir6 = 100.0
+ir7 = 6
+kr0 = ftlen(ir7)
+kr1 = (kr0 / sr)
+kr0 = (1.0 / kr1)
+kr1 = (kr0 * 1.0)
+ir12 = -1.0
+ir13 filelen "Sounds/flutec.wav"
+kr0 = (1.0 / ir13)
+kr2 = (7.0e-2 * kr0)
+ar3 upsamp kr2
+ar4 partikkel ar0, ir4, 2, ar1, ir5, 4, -1.0, -1.0, ir4, ir4, ir6, ir5, -1.0, kr1, ir4, -1.0, -1.0, ar2, -1.0, ir12, 8, ir3, ir5, ir5, -1.0, ir4, ir7, ir7, ir7, ir7, -1.0, ar3, ar3, ar3, ar3, ir5, ir5, ir5, ir5, 1000.0
+ar0 = (0.2 * ar4)
+ar1 = (0.2 * ar0)
+ir20 = 90.0
+ar0 compress ar1, ar2, ir4, ir20, ir20, ir6, ir4, ir4, 0.0
+ar1 = (ar0 * 0.8)
+arl0 = ar1
 ar0 = arl0
  out ar0
 endin
@@ -59,7 +71,10 @@ endin
 
 <CsScore>
 
-f2 0 0 1 "Sounds/flutec.wav" 0.0 0.0 1.0
+f6 0 0 1 "Sounds/flutec.wav" 0.0 0.0 0.0
+f4 0 4096 20  9.0 1.0
+f8 0 8193 9  1.0 1.0 90.0
+f2 0 32768 7  0.0 32768.0 1.0
 
 f0 604800.0
 

@@ -1,0 +1,4 @@
+{
+    "haskell.languageServerVariant": "ghcide",
+    "haskell.formattingProvider": "stylish-haskell"
+}
